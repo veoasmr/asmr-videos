@@ -1,0 +1,60 @@
+Veo 3 Scene & Lighting Examples
+
+KITCHEN SETTINGS
+- "in a modern minimalist kitchen with white marble countertops"
+- "on a rustic wooden kitchen island with warm pendant lighting"
+- "in a bright contemporary kitchen with natural sunlight streaming through windows"
+- "on a dark granite countertop with dramatic under-cabinet LED lighting"
+- "in a cozy farmhouse kitchen with soft warm lighting"
+
+STUDIO LIGHTING SETUPS
+- "under professional studio lighting with softbox illumination"
+- "with cinematic key lighting creating dramatic shadows"
+- "under bright, even studio lighting for crystal-clear visibility"
+- "with three-point lighting setup highlighting every detail"
+- "under color-corrected daylight studio lamps"
+
+NATURAL LIGHTING CONDITIONS
+- "bathed in golden hour sunlight streaming through a window"
+- "under soft morning light with gentle shadows"
+- "in bright natural daylight with crisp, clear visibility"
+- "with dramatic side lighting from a large window"
+- "under overcast sky lighting for even, diffused illumination"
+
+MOOD & ATMOSPHERE
+- "in a moody, dimly lit setting with warm amber tones"
+- "with ethereal backlighting creating a magical glow"
+- "under cool blue lighting for a modern, sleek aesthetic"
+- "with warm, cozy lighting reminiscent of a home kitchen"
+- "in dramatic chiaroscuro lighting with strong contrasts"
+
+BACKGROUND SETTINGS
+- "against a clean white backdrop for maximum focus"
+- "on a weathered wooden cutting board with rustic charm"
+- "against a dark, minimalist background for dramatic effect"
+- "on a marble surface with subtle veining patterns"
+- "with a blurred kitchen background using shallow depth of field"
+
+CINEMATIC EFFECTS
+- "with cinematic lens flares adding visual interest"
+- "featuring subtle light reflections on glass surfaces"
+- "with atmospheric haze for a dreamy, ethereal quality"
+- "including dynamic light and shadow play"
+- "with professional color grading for film-like quality"
+
+MACRO & CLOSE-UP SETTINGS
+- "captured with ultra-sharp macro lens detail"
+- "using shallow depth of field to isolate the subject"
+- "with extreme close-up revealing intricate textures"
+- "featuring tack-sharp focus on the cutting action"
+- "with beautiful bokeh in the background"
+
+TIME OF DAY VARIATIONS
+- "during the golden hour with warm, soft lighting"
+- "in early morning light with cool, fresh tones"
+- "under midday sun with bright, crisp illumination"
+- "during blue hour with cool, atmospheric lighting"
+- "at sunset with warm, orange-tinted light"
+
+HOW TO USE:
+Add these scene and lighting descriptions to your Veo 3 prompts to create specific moods and visual aesthetics for your glass cutting videos.
