@@ -1,194 +1,735 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Glass Cutting Videos with Google Veo 3</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating AI Glass Cutting Videos with Google Veo 3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #334155;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #134e4a 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            transition: background 0.2s;
+        }
+        
+        .cta-button:hover {
+            background: #059669;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 12px;
+            opacity: 0.8;
+            flex-wrap: wrap;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .journey-section {
+            background: white;
+            margin: 40px 20px;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #10b981;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .journey-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .play-icon {
+            width: 40px;
+            height: 40px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .journey-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0;
+        }
+        
+        .journey-subtitle {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .metrics {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .metric {
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .metric-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .followers .metric-number { color: #10b981; }
+        .views .metric-number { color: #3b82f6; }
+        .formula .metric-number { color: #8b5cf6; }
+        
+        .metric-label {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        
+        .description {
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .features {
+            margin-bottom: 25px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+            margin-top: 2px;
+        }
+        
+        .green { background: #10b981; }
+        .blue { background: #3b82f6; }
+        .yellow { background: #f59e0b; }
+        .red { background: #ef4444; }
+        
+        .unlock-button {
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .pricing-section {
+            display: flex;
+            gap: 40px;
+            margin: 40px 20px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            flex-wrap: wrap;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid #10b981;
+        }
+        
+        .limited-offer {
+            background: #10b981;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-subtitle {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #10b981;
+            margin-bottom: 10px;
+        }
+        
+        .price-detail {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+        
+        .feature-list {
+            margin-bottom: 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .checkmark {
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .purchase-button {
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .secure-payment {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+        
+        .access-check {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .access-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .access-subtitle {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .email-input {
+            padding: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .check-button {
+            background: #64748b;
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .reviews-section {
+            background: white;
+            margin: 40px 20px;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .reviews-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .reviews-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .stars {
+            color: #fbbf24;
+            font-size: 1.2rem;
+        }
+        
+        .review-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .review {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 20px 0;
+        }
+        
+        .review:last-child {
+            border-bottom: none;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .reviewer-name {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .review-stars {
+            color: #fbbf24;
+        }
+        
+        .review-text {
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .review-date {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f8fafc;
+        }
+        
+        .support-icon {
+            width: 50px;
+            height: 50px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .support-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .support-text {
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+        
+        .support-email {
+            color: #10b981;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .veo-highlight {
+            color: #3b82f6;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .metrics {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .pricing-section {
+                flex-direction: column;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        function handlePurchase() {
+            const email = document.getElementById('purchaseEmail').value;
+            
+            // Basic email validation
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Redirect to Stripe checkout with email prefilled
+            const stripeUrl = 'https://buy.stripe.com/test_28E14n5SD2CWbDG5tMgrS00';
+            const urlWithEmail = `${stripeUrl}?prefilled_email=${encodeURIComponent(email)}`;
+            
+            // Open in new tab to bypass CSP restrictions
+            window.open(urlWithEmail, '_blank');
+        }
+        
+        function scrollToPurchase() {
+            document.getElementById('lifetimeAccess').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+    </style>
+    <script>
+        function handlePurchase() {
+            const email = document.getElementById('purchaseEmail').value;
+            
+            // Basic email validation
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Redirect to Stripe checkout with email prefilled
+            const stripeUrl = 'https://buy.stripe.com/test_28E14n5SD2CWbDG5tMgrS00';
+            const urlWithEmail = `${stripeUrl}?prefilled_email=${encodeURIComponent(email)}`;
+            
+            // Open in same window
+            window.location.href = urlWithEmail;
+        }
+    </script>
 </head>
-<body class="bg-gradient-to-br from-blue-900 to-green-700 text-white font-sans">
-  <!-- Header -->
-  <header class="text-center py-12 px-4">
-    <div class="mb-4">
-      <span class="bg-blue-600 text-xs px-3 py-1 rounded-full mr-2">Premium Course</span>
-      <span class="bg-purple-600 text-xs px-3 py-1 rounded-full">AI Video Generation</span>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="badges">
+                <span class="badge">Premium Course</span>
+                <span class="badge">AI Video Generation</span>
+            </div>
+            
+            <h1 class="hero-title">
+                Creating AI Glass Cutting<br>
+                Videos with <span class="veo-highlight">Google Veo 3</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                Master the art of AI-generated cutting videos. Learn prompt crafting, scene design, 
+                sound engineering, and monetization strategies to create viral ASMR content.
+            </p>
+            
+            <button class="cta-button" onclick="scrollToPurchase()">
+                ▶ Get Course Access
+            </button>
+            
+            <div class="stats">
+                <span>🎯 6 Comprehensive Modules</span>
+                <span>📚 11 Detailed Lessons</span>
+                <span>🎁 Premium Resources Included</span>
+            </div>
+        </div>
     </div>
-    <h1 class="text-4xl font-bold leading-tight">Creating AI Glass Cutting Videos with <span class="text-teal-400">Google Veo 3</span></h1>
-    <p class="mt-4 text-lg text-gray-200 max-w-2xl mx-auto">Master the art of AI-generated cutting videos. Learn prompt crafting, scene design, sound engineering, and monetization strategies to create viral ASMR content.</p>
-    <a href="#modules" class="mt-6 inline-flex items-center space-x-2 bg-[#00FFC6] hover:bg-[#00d6a7] text-white px-6 py-3 rounded-full font-semibold shadow-lg transition-all duration-300">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-      </svg>
-      <span>Go to Modules</span>
-    </a>
-    <p class="mt-4 text-sm text-gray-300">6 Comprehensive Modules • 11 Detailed Lessons • Premium Resources Included</p>
-  </header>
 
-  <!-- Stats and Intro -->
-  <section class="bg-white text-gray-800 py-12 px-6">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-2xl font-semibold mb-4 text-center text-green-600">From Zero to Viral in 14 Days</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-8">
-        <div>
-          <p class="text-3xl font-bold text-green-700">0 → 150K+</p>
-          <p class="text-gray-600">TikTok Followers</p>
+    <!-- Journey Section -->
+    <div class="journey-section">
+        <div class="journey-header">
+            <div class="play-icon">▶</div>
+            <div>
+                <h2 class="journey-title">From Zero to Viral in 14 Days</h2>
+                <p class="journey-subtitle">My personal journey that inspired this course</p>
+            </div>
         </div>
-        <div>
-          <p class="text-3xl font-bold text-blue-700">50M+</p>
-          <p class="text-gray-600">Total Views</p>
+        
+        <div class="metrics">
+            <div class="metric followers">
+                <div class="metric-number">0 → 150K+</div>
+                <div class="metric-label">TikTok Followers<br>in less than 2 weeks</div>
+            </div>
+            <div class="metric views">
+                <div class="metric-number">50M+</div>
+                <div class="metric-label">Total Views<br>from viral content</div>
+            </div>
+            <div class="metric formula">
+                <div class="metric-number">1</div>
+                <div class="metric-label">Simple Formula<br>that changed everything</div>
+            </div>
         </div>
-        <div>
-          <p class="text-3xl font-bold text-purple-700">1</p>
-          <p class="text-gray-600">Simple Formula</p>
+        
+        <p class="description">
+            I discovered the power of AI-generated glass cutting videos and used one simple formula to explode my TikTok presence. What started as an experiment became a viral sensation that captured millions of viewers worldwide.
+        </p>
+        
+        <p style="margin-bottom: 25px; font-weight: 600;">What you'll learn in this course:</p>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon green">🎯</div>
+                <div>Learn how to access Google Veo 3 completely for free without any upfront costs</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon blue">🎨</div>
+                <div>Master the art of crafting and refining viral prompts that captivate millions</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon yellow">💰</div>
+                <div>Discover proven monetization strategies to turn your viral content into income</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon red">🎁</div>
+                <div>Optional bonus: Get access to my exact viral prompt that generated 50+ million views (available as separate purchase)</div>
+            </div>
         </div>
-      </div>
-      <ul class="list-disc list-inside space-y-2 text-gray-700">
-        <li>Learn how to access Google Veo 3 for free without any upfront costs</li>
-        <li>Master the art of creating and refining viral prompts that captivate millions</li>
-        <li>Discover proven monetization strategies to turn your viral content into income</li>
-        <li><strong>Bonus:</strong> Get access to my exact viral prompt that generated 50M+ views (available as separate purchase)</li>
-      </ul>
-      <div class="text-center mt-12">
-        <a href="#modules" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold">Start Course</a>
-      </div>
+        
+        <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;">
+            This isn't theory – it's a proven system that delivered real results and transformed my social media presence overnight.
+        </p>
+        
+        <button class="unlock-button" onclick="scrollToPurchase()">🔓 Unlock Course</button>
     </div>
-  </section>
 
-  <!-- Section Navigation -->
-  <div class="bg-white text-gray-800 py-6">
-    <div class="max-w-4xl mx-auto flex justify-center space-x-4">
-      <a href="#reviews" class="px-6 py-2 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition">Reviews</a>
-      <a href="#modules" class="px-6 py-2 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition">Modules</a>
-      <a href="#resources" class="px-6 py-2 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition">Resources</a>
+    <!-- Pricing Section -->
+    <div class="pricing-section" id="purchaseSection">
+        <div class="pricing-card featured" id="lifetimeAccess">
+            <div class="limited-offer">⚡ Limited Time Offer</div>
+            <h3 class="pricing-title">Get Lifetime Access</h3>
+            <p class="pricing-subtitle">Complete AI Glass Cutting course with Google Veo 3</p>
+            
+            <div class="price">$9.99</div>
+            <p class="price-detail">One-time payment • Lifetime access</p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <span class="checkmark">✓</span>
+                    <span>6 comprehensive modules with 11 detailed lessons</span>
+                </div>
+                <div class="feature-item">
+                    <span class="checkmark">✓</span>
+                    <span>Premium resources and templates included</span>
+                </div>
+                <div class="feature-item">
+                    <span class="checkmark">✓</span>
+                    <span>Access to viral glass cutting prompt and refinement strategies</span>
+                </div>
+            </div>
+            
+            <input type="email" class="email-input" placeholder="Enter your email address" id="purchaseEmail">
+            <button class="purchase-button" onclick="handlePurchase()">🛒 Purchase Course Now</button>
+            
+            <p class="secure-payment">🔒 Secure payment powered by Stripe</p>
+        </div>
+        
+        <div class="pricing-card access-check">
+            <h3 class="access-title">Check Your Access</h3>
+            <p class="access-subtitle">Enter your email to check if you already have access to the course</p>
+            
+            <input type="email" class="email-input" placeholder="Enter your email address">
+            <button class="check-button">Check Access</button>
+        </div>
     </div>
-  </div>
 
-  <!-- Reviews Section -->
-  <section id="reviews" class="bg-gray-100 text-gray-900 py-12 px-6">
-    <div class="max-w-4xl mx-auto">
-      <h3 class="text-2xl font-bold mb-4">Reviews</h3>
-      <div class="space-y-4">
-        <div class="bg-white p-4 rounded shadow">
-          <p class="font-semibold">Aaron</p>
-          <p class="text-yellow-500">★★★★★</p>
-          <p>Course was all text and no vids which I honestly prefer. Great for beginners who don't know much about Veo3.</p>
+    <!-- Reviews Section -->
+    <div class="reviews-section">
+        <div class="reviews-header">
+            <h3 class="reviews-title">Reviews</h3>
+            <div class="rating-summary">
+                <span class="stars">★★★★★</span>
+                <span>5 (5 reviews)</span>
+            </div>
         </div>
-        <div class="bg-white p-4 rounded shadow">
-          <p class="font-semibold">Brenda</p>
-          <p class="text-yellow-500">★★★★★</p>
-          <p>Definitely lots of gems easy to follow! Highly recommend!</p>
+        
+        <div class="review-controls">
+            <span>🔽 Sort by</span>
+            <span>Newest First</span>
+            <span>📊 Modulus</span>
+            <span>📋 Responses</span>
         </div>
-        <div class="bg-white p-4 rounded shadow">
-          <p class="font-semibold">Zack</p>
-          <p class="text-yellow-500">★★★★☆</p>
-          <p>Was pretty hesitant but it was straightforward and helped me figure out Veo 3 for free!</p>
+        
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Aaron</span>
+                <span class="review-stars">★★★★★</span>
+            </div>
+            <p class="review-text">
+                course was all fast and no ads which I honestly prefer. great for beginners who dont know much about veo3
+            </p>
+            <p class="review-date">July 08, 2025</p>
         </div>
-      </div>
-      <form class="mt-8 bg-white p-6 rounded shadow">
-        <h4 class="text-lg font-semibold mb-4">Leave a Review</h4>
-        <input type="text" placeholder="Your Name" class="w-full border border-gray-300 rounded px-4 py-2 mb-4" />
-        <textarea rows="4" placeholder="Your Review" class="w-full border border-gray-300 rounded px-4 py-2 mb-4"></textarea>
-        <button class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Submit Review</button>
-      </form>
+        
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Brenda</span>
+                <span class="review-stars">★★★★★</span>
+            </div>
+            <p class="review-text">
+                Definitely lots of gems easy to follow! Highly recommend !
+            </p>
+            <p class="review-date">June 30, 2025</p>
+        </div>
+        
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">zack</span>
+                <span class="review-stars">★★★★★</span>
+            </div>
+            <p class="review-text">
+                was pretty hesitant abt buying this at first but it was actually very straight forward and had everything i needed. so using veo 3 for free now so which is helped me figure out
+            </p>
+            <p class="review-date">June 29, 2025</p>
+        </div>
+        
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Anthony</span>
+                <span class="review-stars">★★★★★</span>
+            </div>
+            <p class="review-text">
+                DEFINITELY worth the 10 bucks! Theres sooo much info. I also bought his viral piaget prompt which was legit accurate and in depth. Great course!
+            </p>
+            <p class="review-date">June 18, 2025</p>
+        </div>
+        
+        <div class="review">
+            <div class="review-header">
+                <span class="reviewer-name">Luke</span>
+                <span class="review-stars">★★★★★</span>
+            </div>
+            <p class="review-text">
+                Didn't know much going in, but this course taught me so much! Super helpful for making TikToks and even showed me how to use Veo 3 for free. Highly recommend!
+            </p>
+            <p class="review-date">June 18, 2025</p>
+        </div>
     </div>
-  </section>
 
-  <!-- Modules Section -->
-  <section id="modules" class="bg-gray-100 text-gray-900 py-12 px-6">
-    <div class="max-w-4xl mx-auto space-y-8">
-      <div class="bg-white rounded-lg shadow p-6">
-        <h4 class="font-semibold text-xl text-blue-800">Module 1</h4>
-        <p class="text-lg font-bold">Introduction to AI Video Generation & Google Veo 3</p>
-        <div class="mt-2 space-y-1">
-          <a href="/lesson1" class="text-sm text-blue-600 hover:underline">Open Lesson</a>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow p-6">
-        <h4 class="font-semibold text-xl text-blue-800">Module 2</h4>
-        <p class="text-lg font-bold">Setting Up Google Veo 3 for Free</p>
-        <div class="mt-2 space-y-1">
-          <a href="/lesson2" class="text-sm text-blue-600 hover:underline">Open Lesson</a>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow p-6">
-        <h4 class="font-semibold text-xl text-blue-800">Module 3</h4>
-        <p class="text-lg font-bold">Designing Your Glass Cutting Scene</p>
-        <div class="mt-2 space-y-1">
-          <a href="/lesson3" class="text-sm text-blue-600 hover:underline">Open Lesson</a>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow p-6">
-        <h4 class="font-semibold text-xl text-blue-800">Module 4</h4>
-        <p class="text-lg font-bold">Generating and Refining Videos</p>
-        <div class="mt-2 space-y-1">
-          <a href="/lesson4" class="text-sm text-blue-600 hover:underline">Open Lesson</a>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow p-6">
-        <h4 class="font-semibold text-xl text-blue-800">Module 5</h4>
-        <p class="text-lg font-bold">Sound Design & Effects</p>
-        <div class="mt-2 space-y-1">
-          <a href="/lesson5" class="text-sm text-blue-600 hover:underline">Open Lesson</a>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow p-6">
-        <h4 class="font-semibold text-xl text-blue-800">Module 6</h4>
-        <p class="text-lg font-bold">Publishing & Monetization</p>
-        <div class="mt-2 space-y-1">
-          <a href="/lesson6" class="text-sm text-blue-600 hover:underline">Open Lesson</a>
-        </div>
-      </div>
+    <!-- Footer -->
+    <div class="footer">
+        <div class="support-icon">📧</div>
+        <h4 class="support-title">Have Questions or Concerns?</h4>
+        <p class="support-text">We're here to help! Reach out to us with any questions about the course or if you need support.</p>
+        <a href="mailto:thecrispcoil@gmail.com" class="support-email">thecrispcoil@gmail.com</a>
     </div>
-  </section>
-
-  <!-- Resources Section -->
-  <section id="resources" class="bg-gray-50 text-gray-900 py-12 px-6">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow">
-          <div class="flex items-center space-x-4">
-            <div class="w-4 h-4 bg-red-500 rounded-full"></div>
-            <h4 class="font-semibold text-lg">Veo Prompt Templates</h4>
-          </div>
-          <p class="text-sm text-gray-600 mt-2">Ready-to-use prompts for glass cutting videos</p>
-            <a href="https://raw.githubusercontent.com/noobpokersss/asmr-videos/master/downloads/Veo_Prompt_Templates1.txt"mt-4 inline-block bg-gray-900 text-white px-4 py-2 rounded shadow hover:bg-gray-800">
-            ⬇️ Download TXT File
-          </a>
-
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow">
-          <div class="flex items-center space-x-4">
-            <div class="w-4 h-4 bg-green-500 rounded-full"></div>
-            <h4 class="font-semibold text-lg">Glass Sound Pack</h4>
-          </div>
-          <p class="text-sm text-gray-600 mt-2">Professional sound effects library</p>
-          <a href="https://raw.githubusercontent.com/noobpokersss/asmr-videos/master/downloads/Glass_Sound_Pack_Descriptions1.txt"mt-4 inline-block bg-gray-900 text-white px-4 py-2 rounded shadow hover:bg-gray-800">
-            ⬇️ Download TXT File
-          </a>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow">
-          <div class="flex items-center space-x-4">
-            <div class="w-4 h-4 bg-yellow-400 rounded-full"></div>
-            <h4 class="font-semibold text-lg">Scene & Lighting Guide</h4>
-          </div>
-          <p class="text-sm text-gray-600 mt-2">Examples for creating different moods and atmospheres</p>
-          <a href="https://raw.githubusercontent.com/noobpokersss/asmr-videos/master/downloads/Scene_Lighting_Examples1.txt" download class="mt-4 inline-block bg-gray-900 text-white px-4 py-2 rounded shadow hover:bg-gray-800">
-            ⬇️ Download TXT File
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-blue-900 text-center text-white py-8">
-    <p class="mb-2">Have Questions or Concerns?</p>
-    <p>Email us at <a href="mailto:veo3marketingai@gmail.com" class="underline">veo3marketingai@gmail.com</a></p>
-  </footer>
 </body>
 </html>
