@@ -504,6 +504,19 @@
                 block: 'start'
             });
         }
+        
+        function checkAccess() {
+            const email = document.getElementById('checkEmail').value;
+            
+            // Basic email validation
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // For now, just show a message - you'll need to implement actual checking
+            alert('Access check feature coming soon! Please contact veo3marketingai@gmail.com to verify your access.');
+        }
     </script>
 </head>
 <body>
@@ -629,8 +642,8 @@
             <h3 class="access-title">Check Your Access</h3>
             <p class="access-subtitle">Enter your email to check if you already have access to the course</p>
             
-            <input type="email" class="email-input" placeholder="Enter your email address">
-            <button class="check-button">Check Access</button>
+            <input type="email" class="email-input" placeholder="Enter your email address" id="checkEmail">
+            <button class="check-button" onclick="checkAccess()">Check Access</button>
         </div>
     </div>
 
@@ -712,7 +725,7 @@
         <div class="support-icon">📧</div>
         <h4 class="support-title">Have Questions or Concerns?</h4>
         <p class="support-text">We're here to help! Reach out to us with any questions about the course or if you need support.</p>
-        <a href="mailto:thecrispcoil@gmail.com" class="support-email">thecrispcoil@gmail.com</a>
+        <a href="mailto:veo3marketingai@gmail.com" class="support-email">veo3marketingai@gmail.com</a>
     </div>
 </body>
 </html>
