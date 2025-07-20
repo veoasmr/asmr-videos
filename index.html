@@ -479,30 +479,6 @@
                 gap: 10px;
             }
         }
-        
-        function handlePurchase() {
-            const email = document.getElementById('purchaseEmail').value;
-            
-            // Basic email validation
-            if (!email || !email.includes('@')) {
-                alert('Please enter a valid email address');
-                return;
-            }
-            
-            // Redirect to Stripe checkout with email prefilled
-            const stripeUrl = 'https://buy.stripe.com/test_28E14n5SD2CWbDG5tMgrS00';
-            const urlWithEmail = `${stripeUrl}?prefilled_email=${encodeURIComponent(email)}`;
-            
-            // Open in new tab to bypass CSP restrictions
-            window.open(urlWithEmail, '_blank');
-        }
-        
-        function scrollToPurchase() {
-            document.getElementById('lifetimeAccess').scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-            });
-        }
     </style>
     <script>
         function handlePurchase() {
@@ -520,6 +496,13 @@
             
             // Open in same window
             window.location.href = urlWithEmail;
+        }
+        
+        function scrollToPurchase() {
+            document.getElementById('lifetimeAccess').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
     </script>
 </head>
